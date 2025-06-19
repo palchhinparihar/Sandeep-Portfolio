@@ -1,35 +1,40 @@
+import Stepper, { Step } from "../common/Stepper";
+import { experiences } from "../../data/experiences";
+
 const Experience = ({ title }) => {
   return (
-    <section id="experience" className="py-20 px-6 min-h-screen">
+    <section id="experience" className="py-20 px-6 min-h-screen backdrop-blur-sm">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">{title}</h2>
         <div className="w-40 bg-white h-1 mx-auto mb-12"></div>
 
-        {/* Interpreter Role */}
-        <div className="mb-12 text-left">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Korean-English Interpreter (2003–Present)</h3>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Worked with leading companies and government agencies like <strong>Hyundai, LG, Samsung, POSCO</strong>, the <strong>Embassy of Korea</strong>, CII, and various Indian ministries.
-            Provided simultaneous and consecutive interpretation across:
-          </p>
-          <ul className="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>UX R&D sessions at Hyundai Namyang (via IPSOS, TOLUNA)</li>
-            <li>Finance interpretation for NH Capital, IFFCO Kisan</li>
-            <li>Interior/Exterior design evaluations & EV infrastructure projects</li>
-          </ul>
-        </div>
+        <Stepper initialStep={1} backButtonText="Back" nextButtonText="Next">
+          {experiences.map((experience, index) => (
+            <Step key={index}>
+              <div className="text-left p-4 md:p-6 rounded-xl bg-gray-800 shadow-lg transition duration-300">
+                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2 tracking-tight">
+                  {experience.title}
+                </h3>
 
-        {/* GMP Consultant Role */}
-        <div className="text-left">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">GMP Consultant & Audit Interpreter (2018–Present)</h3>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Acted as GMP consultant and MFDS (Korean FDA) interpreter for over 20+ audits, both virtual and on-site. Provided pre-audit consultation and technical interpretation for major Indian pharma manufacturers.
-          </p>
-          <ul className="list-disc ml-6 mt-3 text-gray-300 space-y-2">
-            <li>Extensive knowledge of GMP, QA, and API compliance</li>
-            <li>Clients include: Mylan, Mankind, Laurus Labs, Dr. Reddy’s, Emcure, Sun Pharma, Macleods, and more</li>
-          </ul>
-        </div>
+                {experience.duration && (
+                  <p className="text-gray-300 text-base md:text-lg font-medium">
+                    <span className="text-gray-400 font-semibold">Duration:</span> {experience.duration}
+                  </p>
+                )}
+
+                <p className="text-gray-300 text-base md:text-lg mt-4 leading-relaxed">
+                  {experience.description}
+                </p>
+
+                <ul className="list-disc ml-6 mt-4 text-gray-200 space-y-2 marker:text-blue-400 text-base md:text-[17px] leading-relaxed">
+                  {experience.points.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </Step>
+          ))}
+        </Stepper>
       </div>
     </section>
   );
