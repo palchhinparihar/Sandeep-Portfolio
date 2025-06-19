@@ -31,7 +31,7 @@ const ScrollToTop = () => {
       }`}
       aria-label="Scroll to top"
     >
-      <i class="fa-solid fa-arrow-up text-xl"></i>
+      <i className="fa-solid fa-arrow-up text-xl"></i>
     </button>
   );
 };
