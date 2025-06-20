@@ -2,7 +2,7 @@ import { socialIcons } from "../../data/socialLinks";
 
 const Contact = ({ title }) => {
   return (
-    <section id="contact" className="p-20 pt-24 mb-14 px-6 backdrop-blur-sm">
+    <section id="contact" className="min-h-[85vh] pt-20 px-6 backdrop-blur-sm">
       <div className="max-w-3xl md:max-w-2xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">
           {title}
