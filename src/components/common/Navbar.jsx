@@ -50,7 +50,7 @@ const Navbar = ({ title }) => {
                 spy={true}
                 smooth={true}
                 duration={500}
-                offset={-80}
+                offset={-100}
                 activeClass="active-link"
                 className="cursor-pointer text-white hover:text-blue-400 transition-colors"
               >

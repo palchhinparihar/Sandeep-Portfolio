@@ -5,6 +5,10 @@ import Home from "./components/main/Home";
 import About from "./components/main/About";
 import Experience from "./components/main/Experience";
 import Certificates from "./components/main/Certificates";
+import Clients from "./components/main/Clients";
+import Skills from "./components/main/Skills";
+import Contact from "./components/main/Contact";
+import Footer from "./components/common/Footer";
 
 const App = () => {
   return (
@@ -30,7 +34,12 @@ const App = () => {
         <About title="About Me" />
         <Experience title="Experience" />
         <Certificates title="Certificates" />
+        <Clients title="Clients" />
+        <Skills title="Technical Skills" />
+        <Contact title="Contact Me" />
       </main>
+
+      <Footer />
     </>
   )
 }

@@ -17,3 +17,17 @@ body {
 .active-link {
   @apply text-blue-400 font-semibold;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 22s linear infinite;
+}
+

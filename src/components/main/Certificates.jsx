@@ -9,7 +9,7 @@ const Certificates = ({ title }) => {
         <div className="w-44 md:w-54 bg-white h-1 mx-auto mb-12"></div>
 
         {/* Language Certificates (Images) */}
-        <h3 className="text-2xl text-white mb-6 text-center">Language Certificates</h3>
+        <h3 className="text-2xl mb-6 text-center">Language Certificates</h3>
         <div className="grid gap-6 md:grid-cols-2 mb-12">
           {certificates.language.map((cert, index) => (
             <div key={index} className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-blue-500/30 transition flex flex-col items-center gap-4">
@@ -19,7 +19,7 @@ const Certificates = ({ title }) => {
               {cert.link && (
                 <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-[15px] flex justify-center items-center group">
                   <span className="group-hover:underline">View Certificate</span>
-                  <i class="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
+                  <i className="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
                 </a>
               )}
             </div>
@@ -37,7 +37,7 @@ const Certificates = ({ title }) => {
               {cert.link && (
                 <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-[15px] flex justify-center items-center group">
                   <span className="group-hover:underline">View Certificate</span>
-                  <i class="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
+                  <i className="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
                 </a>
               )}
             </div>
