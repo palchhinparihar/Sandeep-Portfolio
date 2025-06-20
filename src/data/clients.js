@@ -6,7 +6,7 @@ export const clients = [
   "Embassy of Korea",
   "Mankind Pharma",
   "Laurus Labs",
-  "Dr. Reddy’s",
+  "Dr. Reddy's",
   "Emcure",
   "Sun Pharma",
   "Macleods",

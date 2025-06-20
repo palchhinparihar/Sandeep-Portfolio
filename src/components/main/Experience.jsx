@@ -8,7 +8,8 @@ const Experience = ({ title }) => {
         <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">{title}</h2>
         <div className="w-44 md:w-51 bg-white h-1 mx-auto mb-12"></div>
 
-        <Stepper initialStep={1} backButtonText="Back" nextButtonText="Next">
+        <div data-aos="fade-up">
+          <Stepper initialStep={1} backButtonText="Back" nextButtonText="Next">
           {experiences.map((experience, index) => (
             <Step key={index}>
               <div className="text-left p-4 md:p-6 rounded-xl bg-gray-800 shadow-lg transition duration-300">
@@ -35,6 +36,7 @@ const Experience = ({ title }) => {
             </Step>
           ))}
         </Stepper>
+        </div>
       </div>
     </section>
   );

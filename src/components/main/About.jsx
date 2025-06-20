@@ -5,7 +5,7 @@ const About = ({ title }) => {
     <section id="about" className="py-20 px-6 backdrop-blur-sm">
       <div className="md:w-[80%] mx-auto flex flex-col md:flex-row items-center gap-14">
         {/* Image Section */}
-        <div className="flex-shrink-0 rounded-xl overflow-hidden cursor-pointer hover:shadow-xl hover:shadow-blue-900 transition-shadow duration-300">
+        <div data-aos="fade-right" className="flex-shrink-0 rounded-xl overflow-hidden cursor-pointer hover:shadow-xl hover:shadow-blue-900 transition-shadow duration-300">
           <img
             src={profileImg}
             alt="Sandeep Singh"
@@ -14,7 +14,7 @@ const About = ({ title }) => {
         </div>
 
         {/* Text Section */}
-        <div className="text-center md:text-left">
+        <div data-aos="fade-left" className="text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-blue-400">{title}</h2>
 
           <div className="w-40 md:w-44 bg-white h-1 mx-auto md:mx-0 mb-8"></div>

@@ -8,9 +8,10 @@ const Skills = ({ title }) => {
         <div className="w-58 md:w-70 h-1 bg-white mx-auto mb-12"></div>
       </div>
 
-      <div className="md:w-[85%] mx-auto grid gap-10 md:grid-cols-3">
+      <div data-aos="fade-up" className="md:w-[85%] mx-auto grid gap-10 md:grid-cols-3">
         {skills.map((group, index) => (
           <div
+          
             key={index}
             className="bg-gray-800 rounded-xl shadow p-8 min-h-[280px] hover:shadow-blue-500/30 transition hover:scale-105 duration-300"
           >

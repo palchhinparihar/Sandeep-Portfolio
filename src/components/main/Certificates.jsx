@@ -9,8 +9,8 @@ const Certificates = ({ title }) => {
         <div className="w-44 md:w-54 bg-white h-1 mx-auto mb-12"></div>
 
         {/* Language Certificates (Images) */}
-        <h3 className="text-2xl mb-6 text-center">Language Certificates</h3>
-        <div className="grid gap-6 md:grid-cols-2 mb-12">
+        <h3 data-aos="fade-up" className="text-2xl mb-6 text-center">Language Certificates</h3>
+        <div data-aos="zoom-in" className="grid gap-6 md:grid-cols-2 mb-12">
           {certificates.language.map((cert, index) => (
             <div key={index} className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-blue-500/30 transition flex flex-col items-center gap-4">
               <h4 className="text-xl font-semibold text-white">{cert.title}</h4>
@@ -27,8 +27,8 @@ const Certificates = ({ title }) => {
         </div>
 
         {/* Experience Certificates (Links) */}
-        <h3 className="text-2xl text-white mb-6 text-center">Experience Certificates</h3>
-        <div className="grid gap-6 md:grid-cols-2">
+        <h3 data-aos="fade-up" className="text-2xl text-white mb-6 text-center">Experience Certificates</h3>
+        <div data-aos="zoom-in" className="grid gap-6 md:grid-cols-2">
           {certificates.experience.map((cert, index) => (
             <div key={index} className="bg-gray-800 p-6 rounded-xl shadow hover:shadow-blue-500/30 transition flex flex-col items-center gap-4">
               <h4 className="text-xl font-semibold text-white mb-2">{cert.title}</h4>
