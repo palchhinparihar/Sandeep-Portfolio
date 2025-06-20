@@ -8,7 +8,7 @@ const Skills = ({ title }) => {
         <div className="w-58 md:w-70 h-1 bg-white mx-auto mb-12"></div>
       </div>
 
-      <div data-aos="fade-up" className="md:w-[85%] mx-auto grid gap-10 md:grid-cols-3">
+      <div data-aos="fade-up" className="md:w-[85%] mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {skills.map((group, index) => (
           <div
           

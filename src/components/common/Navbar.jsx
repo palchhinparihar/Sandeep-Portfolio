@@ -14,7 +14,7 @@ const Navbar = ({ title }) => {
   ];
 
   return (
-    <nav className="sticky top-0 bg-[rgb(10,25,47)]/80 text-white z-50 backdrop-blur-lg md:py-4">
+    <nav className="sticky top-0 bg-[rgb(10,25,47)]/80 text-white z-50 backdrop-blur-lg md:px-6 md:py-4">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
         <a className="font-bold hidden md:block text-white text-lg hover:text-gray-200" href="/">

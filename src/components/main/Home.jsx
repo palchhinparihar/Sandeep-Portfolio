@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 const Home = ({ title }) => {
   return (
     <section id="home" className="min-h-[90vh] flex flex-col items-center justify-center text-center px-4">
-      <h1 data-aos="fade-down" className="text-4xl md:text-6xl font-bold text-white mb-4">
+      <h1 data-aos="fade-down" className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
         <span>Hi, </span>
         <span className="text-blue-500">{title}</span>
         <span> here!</span>
