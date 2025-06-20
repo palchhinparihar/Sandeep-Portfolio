@@ -4,13 +4,13 @@ import { socialIcons } from "../../data/socialLinks";
 
 const Navbar = ({ title }) => {
   const path = [
-    { href: "home", label: "Home" },
-    { href: "about", label: "About" },
-    { href: "experience", label: "Experience" },
-    { href: "certificates", label: "Certificates" }, 
-    { href: "clients", label: "Clients" },
-    { href: "skills", label: "Skills" },
-    { href: "contact", label: "Contact" },
+    { href: "home", label: "Home", offset: -50 },
+    { href: "about", label: "About", offset: -50 },
+    { href: "experience", label: "Experience", offset: -50 },
+    { href: "certificates", label: "Certificates", offset: -50 },
+    { href: "clients", label: "Clients", offset: -50 },
+    { href: "skills", label: "Skills", offset: -50 },
+    { href: "contact", label: "Contact", offset: -50 },
   ];
 
   return (
@@ -43,14 +43,14 @@ const Navbar = ({ title }) => {
 
         {/* Navigation Links */}
         <ul className="hidden md:flex gap-6">
-          {path.map(({ href, label }) => (
+          {path.map(({ href, label, offset }) => (
             <li key={href}>
               <Link
                 to={href}
                 spy={true}
                 smooth={true}
                 duration={500}
-                offset={-100}
+                offset={offset}
                 activeClass="active-link"
                 className="cursor-pointer text-white hover:text-blue-400 transition-colors"
               >

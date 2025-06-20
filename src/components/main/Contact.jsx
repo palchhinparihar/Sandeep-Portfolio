@@ -4,20 +4,20 @@ const Contact = ({ title }) => {
   return (
     <section
       id="contact"
-      className="py-20 px-6 backdrop-blur-sm"
+      className="p-20 pt-24 mb-14 px-6 backdrop-blur-sm"
     >
-      <div className="max-w-3xl md:max-w-xl mx-auto text-center">
+      <div className="max-w-3xl md:max-w-2xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">
-          {title || "Contact"}
+          {title}
         </h2>
-        <div className="w-40 bg-white h-1 mx-auto mb-10"></div>
+        <div className="w-43 md:w-52 bg-white h-1 mx-auto mb-10"></div>
 
-        <p className="text-gray-300 mb-12">
+        <p className="text-gray-300 mb-12 text-[17px]">
           I'm available for collaboration, interpretation, or consulting. Choose a method below to get in touch!
         </p>
 
         {/* Contact Buttons */}
-        <div className="flex flex-col w-[80%] mx-auto md:w-full md:flex-row justify-center gap-6 mb-16">
+        <div className="flex flex-col w-[80%] mx-auto md:w-full md:flex-row justify-center gap-6 mb-18">
           {socialIcons
             .filter((social) => social.title === "WhatsApp" || social.title === "Mail")
             .map((social, index) => (
@@ -32,7 +32,7 @@ const Contact = ({ title }) => {
                   social.title === "WhatsApp"
                     ? "bg-green-500 hover:bg-green-600"
                     : "bg-blue-500 hover:bg-blue-600"
-                } text-white font-semibold px-6 py-3 rounded-full transition text-lg`}
+                } text-white font-semibold px-6 py-3.5 rounded-lg transition text-xl`}
               >
                 <i className={`${social.iconClass} mr-2`}></i>
                 <span>{social.title === "WhatsApp" && "Chat on WhatsApp"}</span>
@@ -43,7 +43,7 @@ const Contact = ({ title }) => {
 
         {/* Social Icons */}
         <div className="mt-12">
-          <h3 className="text-xl text-white mb-4">Connect with me</h3>
+          <h3 className="text-2xl text-white mb-6">Connect with me</h3>
           <div className="flex justify-center gap-6 md:gap-8">
             {socialIcons
               .filter((social) => social.title === "LinkedIn" || social.title === "Instagram")
@@ -56,7 +56,7 @@ const Contact = ({ title }) => {
                   title={social.title}
                   aria-label={social.ariaLabel}
                   data-aos={social.aos}
-                  className="text-gray-300 text-3xl md:text-4xl hover:scale-105 hover:text-blue-400 transition duration-300"
+                  className="text-3xl md:text-5xl hover:scale-105 border-2 hover:border-dotted py-5 px-6 rounded-full hover:border-blue-400 hover:text-gray-300  transition duration-300"
                 >
                   <i className={social.iconClass}></i>
                 </a>
