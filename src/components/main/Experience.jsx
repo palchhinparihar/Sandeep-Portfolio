@@ -12,7 +12,7 @@ const Experience = ({ title }) => {
           <Stepper initialStep={1} backButtonText="Back" nextButtonText="Next">
           {experiences.map((experience, index) => (
             <Step key={index}>
-              <div className="text-left p-4 md:p-6 rounded-xl bg-gray-800 shadow-lg transition duration-300">
+              <div className="text-left md:p-6 rounded-xl bg-gray-800 shadow-lg transition duration-300">
                 <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2 tracking-tight">
                   {experience.title}
                 </h3>

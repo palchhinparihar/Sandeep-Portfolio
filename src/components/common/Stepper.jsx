@@ -52,7 +52,7 @@ export default function Stepper({
 
   return (
     <div
-      className="flex min-h-full flex-1 flex-col items-center justify-center p-4"
+      className="flex min-h-full flex-1 flex-col items-center justify-center md:p-4"
       {...rest}
     >
       <div
