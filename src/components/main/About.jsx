@@ -18,7 +18,7 @@ const About = ({ title }) => {
             />
           </div>
 
-          <div>
+          <div data-aos="fade-left">
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
               I'm <strong>Sandeep Singh</strong>, a seasoned <strong>Korean-English Interpreter</strong> and <strong>GMP Consultant</strong> with over <strong>20 years of experience</strong> across the automotive, pharmaceutical, and government sectors.
               I've worked with major organizations like Hyundai, LG, Samsung, POSCO, and Indian pharma leaders, enabling smooth communication, inspections, and regulatory compliance between India and Korea.
