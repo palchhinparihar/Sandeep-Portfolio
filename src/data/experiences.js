@@ -1,7 +1,7 @@
 export const experiences = [
   {
     title: "Korean-English Interpreter",
-    duration: "2003 – Present",
+    duration: "2003 - Present",
     description:
       "Over 20 years of experience as a freelance interpreter across multiple industries, facilitating communication between Korean and Indian stakeholders in both corporate and governmental settings.",
     points: [
@@ -20,7 +20,7 @@ export const experiences = [
     points: [
       "Assisted Korean clients during MFDS GMP inspections at major API and finished formulation manufacturing sites in India.",
       "Translated technical documentation and SOPs, and advised on Indian pharma standards to Korean auditors.",
-      "Worked on 20+ audits for pharma companies including Mankind, Macleods, Emcure, Sun Pharma, Dr. Reddy's, Hetero, Laurus Labs, Aurobindo, and Biocon.",
+      "Worked on 30+ audits for pharma companies including Mankind, Macleods, Emcure, Sun Pharma, Dr. Reddy's, Hetero, Laurus Labs, Aurobindo, and Biocon.",
       "Conducted pre-audit training and facilitated virtual GMP compliance audits post-2020.",
     ],
   },

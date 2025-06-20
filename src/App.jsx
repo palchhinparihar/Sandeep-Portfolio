@@ -4,6 +4,7 @@ import Particles from "./components/common/Particles";
 import Home from "./components/main/Home";
 import About from "./components/main/About";
 import Experience from "./components/main/Experience";
+import Certificates from "./components/main/Certificates";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Home title="Sandeep Singh" />
         <About title="About Me" />
         <Experience title="Experience" />
+        <Certificates title="Certificates" />
       </main>
     </>
   )

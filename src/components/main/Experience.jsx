@@ -6,7 +6,7 @@ const Experience = ({ title }) => {
     <section id="experience" className="py-20 px-6 min-h-screen backdrop-blur-sm">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">{title}</h2>
-        <div className="w-40 bg-white h-1 mx-auto mb-12"></div>
+        <div className="w-44 md:w-51 bg-white h-1 mx-auto mb-12"></div>
 
         <Stepper initialStep={1} backButtonText="Back" nextButtonText="Next">
           {experiences.map((experience, index) => (

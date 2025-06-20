@@ -21,7 +21,7 @@ export const socialIcons = [
     ariaLabel: "Send a WhatsApp message to 9840448604",
   },
   {
-    href: "https://www.instagram.com/your_username", // Replace with your actual username
+    href: "https://www.instagram.com/korean.singh?utm_source=ig_web_button_share_sheet&igsh=MWFpZWtsMTJla2Qxbg==",
     iconClass: "fa-brands fa-instagram",
     title: "Instagram",
     aos: "zoom-in-right",
