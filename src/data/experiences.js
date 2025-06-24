@@ -13,10 +13,10 @@ export const experiences = [
     ],
   },
   {
-    title: "GMP Consultant & MFDS Audit Interpreter",
+    title: "Korean Language Professional for GMP Audits in Pharmaceutical Companies & MFDS Audit Interpreter",
     duration: "2018 - Present",
     description:
-      "Served as interpreter and GMP advisor for MFDS (Korean FDA) audits across India's top pharmaceutical manufacturers.",
+      "Served as interpreter and GMP language expert for MFDS (Korean FDA) audits across India's top pharmaceutical manufacturers.",
     points: [
       "Assisted Korean clients during MFDS GMP inspections at major API and finished formulation manufacturing sites in India.",
       "Translated technical documentation and SOPs, and advised on Indian pharma standards to Korean auditors.",
