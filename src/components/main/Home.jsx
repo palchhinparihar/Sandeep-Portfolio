@@ -9,7 +9,7 @@ const Home = ({ title }) => {
         <span> here!</span>
       </h1>
 
-      <p data-aos="fade-in" className="text-xl md:text-4xl text-gray-200 mt-5 mb-6 font-semibold">
+      <p data-aos="fade-in" className="text-xl md:text-4xl min-h-8 md:min-h-12 text-gray-200 mt-5 mb-6 font-semibold">
         <TypeAnimation
           sequence={["Korean Language Interpreter", 1500, "GMP Consultant", 1500, "Cross-Cultural Expert", 1500]}
           wrapper="span" cursor={false} repeat={Infinity}
