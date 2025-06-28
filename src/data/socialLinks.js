@@ -1,6 +1,6 @@
 export const socialIcons = [
   {
-    href: "mailto:sand1977@gmail.com",
+    href: "mailto:ssandleecompany@gmail.com",
     iconClass: "fa-solid fa-envelope",
     title: "Mail",
     ariaLabel: "Send email to sand1977@gmail.com",
