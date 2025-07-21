@@ -8,6 +8,7 @@ const Navbar = ({ title }) => {
     { href: "about", label: "About", offset: -50 },
     { href: "experience", label: "Experience", offset: -50 },
     { href: "certificates", label: "Certificates", offset: -50 },
+    { href: "testimonials", label: "Testimonials", offset: -50 },
     { href: "clients", label: "Clients", offset: -50 },
     { href: "skills", label: "Skills", offset: -50 },
     { href: "contact", label: "Contact", offset: -50 },

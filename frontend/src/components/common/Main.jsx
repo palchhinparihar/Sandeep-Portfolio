@@ -6,6 +6,7 @@ import Certificates from "../main/Certificates";
 import Clients from "../main/Clients";
 import Skills from "../main/Skills";
 import Contact from "../main/Contact";
+import Testimonials from "../main/Testimonials";
 
 const Main = () => {
   return (
@@ -28,6 +29,7 @@ const Main = () => {
         <About title="About Me" />
         <Experience title="Experience" />
         <Certificates title="Certificates" />
+        <Testimonials title="What People Say" />
         <Clients title="Clients" />
         <Skills title="Technical Skills" />
         <Contact title="Contact Me" />

@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
       return res.status(404).json({ success: false, message: "No testimonials found" });
     }
 
-    res.status(200).json({ success: true, message: "No testimonials found", testimonials });
+    res.status(200).json({ success: true, message: "Testimonials fetched successfully", testimonials });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ success: false, error: 'Interal Server Error', message: error.message });
