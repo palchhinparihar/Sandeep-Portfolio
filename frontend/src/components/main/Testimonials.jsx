@@ -66,17 +66,17 @@ const Testimonials = ({ title }) => {
           <div className="w-44 md:w-76 bg-white h-1 mx-auto mb-12"></div>
 
           {/* Testimonial Form */}
-          <div className="mb-15">
+          <div data-aos="fade-out" className="mb-15">
             <AddTestimonial handleSubmit={handleSubmit} formData={formData} handleChange={handleChange} />
           </div>
 
           {/* Render Testimonials */}
           {loading ? (
-            <div className="text-gray-500">Loading testimonials...</div>
+            <div data-aos="fade-in" className="text-gray-500">Loading testimonials...</div>
           ) : testimonials.length === 0 ? (
-            <div className="text-lg md:text-2xl font-semibold text-gray-400">No testimonials yet. Add One.</div>
+            <div data-aos="fade-in" className="text-lg md:text-2xl font-semibold text-gray-400">No testimonials yet. Add One.</div>
           ) : (
-            <div className="flex overflow-x-auto gap-6 pb-4 px-1 snap-x snap-mandatory scroll-smooth">
+            <div data-aos="fade-up" className="flex overflow-x-auto gap-6 pb-4 px-1 snap-x snap-mandatory scroll-smooth">
               {testimonials.map((t, index) => (
                 <div
                   key={t._id || index}
