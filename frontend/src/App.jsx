@@ -13,6 +13,7 @@ const App = () => {
       duration: 1000,
     });
   }, []);
+  
   return (
     <>
       <Navbar title="Sandeep Singh" />

@@ -10,15 +10,16 @@ const Navbar = ({ title }) => {
     { href: "certificates", label: "Certificates", offset: -50 },
     { href: "testimonials", label: "Testimonials", offset: -50 },
     { href: "clients", label: "Clients", offset: -50 },
+    { href: "gallery", label: "Gallery", offset: -50 },
     { href: "skills", label: "Skills", offset: -50 },
     { href: "contact", label: "Contact", offset: -50 },
   ];
 
   return (
-    <nav className="sticky top-0 bg-[rgb(10,25,47)]/80 text-white z-50 backdrop-blur-lg md:px-6 md:py-4">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="sticky top-0 bg-[rgb(10,25,47)]/80 text-white z-50 backdrop-blur-lg px-3 xl-px-6 md:py-4">
+      <div className="container mx-auto lg:px-4 py-3 flex items-center justify-between gap-3">
         {/* Brand */}
-        <a className="font-bold hidden md:block text-white text-lg hover:text-gray-200" href="/">
+        <a className="w-full font-bold hidden md:block text-white lg:text-lg hover:text-gray-200" href="/">
           {title}
         </a>
         <a className="font-bold md:hidden block text-white" href="/">
@@ -43,7 +44,7 @@ const Navbar = ({ title }) => {
         </div>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden md:flex gap-2 lg:gap-6">
           {path.map(({ href, label, offset }) => (
             <li key={href}>
               <Link
@@ -53,7 +54,7 @@ const Navbar = ({ title }) => {
                 duration={500}
                 offset={offset}
                 activeClass="active-link"
-                className="cursor-pointer text-white hover:text-blue-400 transition-colors"
+                className="cursor-pointer text-white text-sm lg:text-[16px] hover:text-blue-400 transition-colors"
               >
                 {label}
               </Link>
