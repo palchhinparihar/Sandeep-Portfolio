@@ -1,5 +1,5 @@
-// const BASE_URL = "https://sandeep-portfolio-0z4a.onrender.com/api/testimonials";
-const BASE_URL = "http://localhost:3000/api/testimonials";
+const BASE_URL = "https://sandeep-portfolio-0z4a.onrender.com/api/testimonials";
+// const BASE_URL = "http://localhost:3000/api/testimonials";
 
 // Fetch all testimonials
 export const getTestimonials = async () => {
