@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getTestimonials, addTestimonial } from "../../api/testimonials";
 import AddTestimonial from "./AddTestimonial";
 import { toast } from 'react-toastify';
-import Toastify from "../common/Toastify";
 
 const Testimonials = ({ title }) => {
   const [testimonials, setTestimonials] = useState([]);
@@ -15,7 +14,7 @@ const Testimonials = ({ title }) => {
       try {
         setLoading(true); // Start loading
         const data = await getTestimonials();
-        setTestimonials(data);
+        setTestimonials(data.testimonials || [] );
       } catch (err) {
         console.error("Error fetching testimonials:", err);
       } finally {
@@ -40,26 +39,16 @@ const Testimonials = ({ title }) => {
       const newTestimonial = await addTestimonial(formData);
       setTestimonials([newTestimonial, ...testimonials]);
 
-      toast('Thank you! Your testimonial has been submitted successfully.', {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      toast.success('Thank you! Your testimonial has been submitted successfully.');
 
       setFormData({ personName: "", companyName: "", review: "" });
     } catch (err) {
-      console.error("Error adding testimonial:", err);
+      toast.error("Error adding testimonial:", err);
     }
   };
 
   return (
     <>
-      <Toastify />
       <section id="testimonials" className="py-20 px-6 min-h-[80vh] backdrop-blur-sm">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-3">{title}</h2>
@@ -72,8 +61,8 @@ const Testimonials = ({ title }) => {
 
           {/* Render Testimonials */}
           {loading ? (
-            <div data-aos="fade-in" className="text-gray-500">Loading testimonials...</div>
-          ) : testimonials.length === 0 ? (
+            <div data-aos="fade-in" className="text-gray-500 animate-pulse">Loading testimonials...</div>
+          ) : testimonials?.length === 0 ? (
             <div data-aos="fade-in" className="text-lg md:text-2xl font-semibold text-gray-400">No testimonials yet. Add One.</div>
           ) : (
             <div data-aos="fade-up" className="flex overflow-x-auto gap-6 pb-4 px-1 snap-x snap-mandatory scroll-smooth">

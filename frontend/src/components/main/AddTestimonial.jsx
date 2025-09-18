@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
   const isDisabled =
     !formData.personName.trim() ||
@@ -16,7 +14,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
           value={formData.personName}
           onChange={handleChange}
           required
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded"
         />
         <input
           type="text"
@@ -25,7 +23,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
           value={formData.companyName}
           onChange={handleChange}
           required
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded"
         />
       </div>
       <textarea
@@ -34,8 +32,8 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
         value={formData.review}
         onChange={handleChange}
         required
-        className="w-full p-2 border rounded"
-        rows="4"
+        className="w-full p-3 border rounded"
+        rows="5"
       />
 
       <button
@@ -43,7 +41,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
         disabled={isDisabled}
         className={`${
           isDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-        } text-white font-semibold py-2 px-6 rounded-lg transition flex items-center`}
+        } text-white text-base lg:text-lg font-semibold py-3 px-6 rounded-lg transition flex items-center`}
       >
         Submit Testimonial
       </button>

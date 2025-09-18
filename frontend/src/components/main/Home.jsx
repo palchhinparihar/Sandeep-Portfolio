@@ -21,14 +21,14 @@ const Home = ({ title }) => {
       </p>
 
       <div data-aos="fade-up" className="flex flex-col md:flex-row justify-center items-center gap-4">
-        <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition flex items-center">
+        <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center">
           <i className="fa-solid fa-message mr-2"></i>
           <span>Contact Me</span>
         </a>
         <a
           href="/Sandeep Singh (Interpretation) CV.docx"
           download
-          className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold py-2 px-6 rounded-lg transition flex items-center"
+          className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition flex items-center"
         >
           <i className="fas fa-download mr-2"></i>
           <span>Download CV</span>
