@@ -15,13 +15,13 @@ export const experiences = [
     title: "GMP Audit Interpreter & Pharma Language Specialist",
     duration: "2018 - Present",
     description:
-      "Interpreter and language consultant for MFDS (Korean FDA) GMP audits at leading Indian pharmaceutical companies.",
+      "Interpreter and language consultant for MFDS (Korean FDA) GMP audits and customer inspections at leading Indian pharmaceutical companies.",
     points: [
       "Facilitated MFDS inspections at API and finished formulation manufacturing sites.",
-      "Translated technical documents/SOPs and bridged Korean and Indian GMP standards.",
-      "Supported 30+ audits for pharma majors incl. Mankind, Macleods, Emcure, Sun Pharma, Dr. Reddy’s, Laurus Labs, Aurobindo, Biocon.",
-      "Key Customer Audits: Grace Pharma (Korea), Boryung Pharma (Korea), Zydus Lifesciences (Baroda), AMI Lifesciences (Baroda).",
-      "Conducted pre-audit training and virtual GMP compliance audits post-2020.",
+      "Translated technical documents, SOPs, and compliance reports bridging Korean and Indian GMP standards.",
+      "Supported 30+ audits for pharma majors including Dr. Reddy's (Hyderabad), Mankind, Macleods, Emcure, Sun Pharma, Laurus Labs, Aurobindo, Biocon, Nosch Labs, Bluestar India, and Rubicon Research.",
+      "Key Korean customer audits and collaborations: Grace Pharma, Boryung Pharma, PolyPeptide Group, and S.Y. System Korea.",
+      "Conducted pre-audit training programs and virtual GMP compliance audits post-2020.",
     ],
   },
   {
@@ -30,8 +30,8 @@ export const experiences = [
     description:
       "Facilitating India-Korea business cooperation with deep industry knowledge and multilingual fluency.",
     points: [
-      "Mediated communication for ministerial visits, policy projects, and global exhibitions (e.g. India-Korea Business Summit).",
-      "Advised across industries: automotive, infrastructure, R&D, pharmaceuticals, and investment projects.",
+      "Mediated communication for ministerial visits, policy projects, and global exhibitions (e.g., India-Korea Business Summit).",
+      "Advised across industries including pharmaceuticals, automotive, infrastructure, R&D, and investment projects.",
     ],
   },
 ];
