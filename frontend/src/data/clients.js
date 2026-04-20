@@ -16,6 +16,7 @@ export const clients = [
   "Vivpharms Korea",
   "Samoh Pharma Korea",
   "S.Y. System Korea",
+  "Bayer Korea",
 
   // Indian Pharmaceutical Companies
   "Dr. Reddy's",
@@ -33,6 +34,8 @@ export const clients = [
   "Grace Pharma",
   "PolyPeptide Group",
   "Repute Health Care Korea",
+  "Sohan Healthcare Pune",
+  "Encube Ethicals Goa",
 
   // Finance & Others
   "NH Capital",
