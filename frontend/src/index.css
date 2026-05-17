@@ -3,11 +3,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: #020813;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 .base-link {

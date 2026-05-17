@@ -280,6 +280,14 @@ export default function Galaxy({
       renderer.render({ scene: mesh });
     }
     animateId = requestAnimationFrame(update);
+
+    // Keep the canvas locked to its container to avoid accidental overflow.
+    gl.canvas.style.position = 'absolute';
+    gl.canvas.style.inset = '0';
+    gl.canvas.style.width = '100%';
+    gl.canvas.style.height = '100%';
+    gl.canvas.style.display = 'block';
+
     ctn.appendChild(gl.canvas);
 
     function handleMouseMove(e) {
@@ -328,5 +336,5 @@ export default function Galaxy({
     transparent
   ]);
 
-  return <div ref={ctnDom} className="w-full h-full relative" {...rest} />;
+  return <div ref={ctnDom} className="w-full h-full relative overflow-hidden" {...rest} />;
 }

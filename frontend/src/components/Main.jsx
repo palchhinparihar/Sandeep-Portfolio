@@ -12,7 +12,7 @@ import Contact from "./main/Contact";
 const Main = () => {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full -z-10">
+      <div className="fixed inset-0 overflow-hidden">
         <Galaxy
           mouseRepulsion
           mouseInteraction
