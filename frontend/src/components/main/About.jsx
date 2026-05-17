@@ -23,12 +23,12 @@ const About = ({ title }) => {
         </div>
 
         <div data-aos="fade-left">
-          <p className="md:text-xl text-gray-300 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             I'm <strong>Sandeep Singh</strong>, a seasoned <strong>Korean-English Interpreter</strong> and <strong>Korean Language Professional for GMP Audits in Pharmaceutical Companies</strong> with over <strong>20 years of experience</strong> across the automotive, pharmaceutical, and government sectors.
             I've worked with major organizations like Hyundai, LG, Samsung, POSCO, and Indian pharma leaders, enabling smooth communication, inspections, and regulatory compliance between India and Korea.
           </p>
 
-          <p className="md:text-xl text-gray-300 leading-relaxed mt-6">
+          <p className="text-base md:text-lg text-gray-300 leading-relaxed mt-6">
             I hold a Bachelor of Commerce from{" "}
             <a className="font-semibold text-blue-200" href="https://www.du.ac.in/" target="_blank">Delhi University</a>{" "}
             and a Korean Language Certificate from{" "}
@@ -36,7 +36,7 @@ const About = ({ title }) => {
             I bring cultural insight, technical language fluency, and deep industry knowledge to every project I take on.
           </p>
 
-          <div className="md:text-xl text-gray-300 leading-relaxed mt-6">
+          <div className="text-base md:text-lg text-gray-300 leading-relaxed mt-6">
             <p>I also offer a wide range of document translation services in India for various languages such as:</p>
             <div className="flex flex-wrap mt-2 gap-2">
               {languages.map((language, index) => (
@@ -47,7 +47,7 @@ const About = ({ title }) => {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 text-left text-sm md:text-[16px] text-gray-200">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 text-left text-sm md:text-base text-gray-200">
             <div>
               <h3 className="font-semibold text-white">Languages</h3>
               <ul className="list-disc ml-5 mt-2">
