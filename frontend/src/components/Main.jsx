@@ -1,13 +1,13 @@
+import Galaxy from "./layout/Galaxy";
 import Home from "./main/Home";
 import About from "./main/About";
 import Experience from "./main/Experience";
 import Certificates from "./main/Certificates";
+import Testimonials from "./main/Testimonials";
 import Clients from "./main/Clients";
+import Gallery from "./main/Gallery";
 import Skills from "./main/Skills";
 import Contact from "./main/Contact";
-import Testimonials from "./main/Testimonials";
-import Gallery from "./main/Gallery";
-import Galaxy from "./layout/Galaxy";
 
 const Main = () => {
   return (

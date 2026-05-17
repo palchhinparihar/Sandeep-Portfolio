@@ -29,6 +29,5 @@ export const certificates = {
       year: "2017-2018",
       link: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:d93f5650-f11f-4a58-b346-29e09efaa11a",
     }
-
   ],
 };

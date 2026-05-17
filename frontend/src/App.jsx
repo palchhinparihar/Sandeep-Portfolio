@@ -1,8 +1,8 @@
 import Navbar from "./components/common/Navbar";
+import Toastify from "./components/common/Toastify";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Main from "./components/Main";
 import Footer from "./components/common/Footer";
-import Toastify from "./components/common/Toastify";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
