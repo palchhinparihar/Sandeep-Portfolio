@@ -8,6 +8,42 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-router-dom')) {
+              return 'router';
+            }
+
+            if (id.includes('framer-motion')) {
+              return 'motion';
+            }
+
+            if (id.includes('react-toastify')) {
+              return 'toastify';
+            }
+
+            if (id.includes('react-icons')) {
+              return 'icons';
+            }
+
+            if (id.includes('aos')) {
+              return 'aos';
+            }
+
+            if (id.includes('ogl')) {
+              return 'ogl';
+            }
+
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
   server: {
     hmr: {
       overlay: false,
