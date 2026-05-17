@@ -30,6 +30,7 @@ const ScrollToTop = () => {
         visible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
       aria-label="Scroll to top"
+      title="Scroll to top"
     >
       <i className="fa-solid fa-arrow-up text-xl"></i>
     </button>

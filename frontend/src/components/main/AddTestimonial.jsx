@@ -13,6 +13,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
           placeholder="Your Name"
           value={formData.personName}
           onChange={handleChange}
+          title="Please enter your name"
           required
           className="w-full p-3 border rounded"
         />
@@ -22,6 +23,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
           placeholder="Company Name"
           value={formData.companyName}
           onChange={handleChange}
+          title="Please enter your company name"
           required
           className="w-full p-3 border rounded"
         />
@@ -31,6 +33,7 @@ const AddTestimonial = ({ handleSubmit, formData, handleChange }) => {
         placeholder="Write your review..."
         value={formData.review}
         onChange={handleChange}
+        title="Please enter your review"
         required
         className="w-full p-3 border rounded"
         rows="5"
