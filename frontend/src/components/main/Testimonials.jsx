@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 const Testimonials = ({ title }) => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedReviews, setExpandedReviews] = useState({});
   const [formData, setFormData] = useState({ personName: "", companyName: "", review: "" });
 
   // Fetch testimonials
@@ -29,6 +30,14 @@ const Testimonials = ({ title }) => {
   // Handle form input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Toggle expanded review
+  const toggleReviewExpand = (id) => {
+    setExpandedReviews((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
 
   // Submit new testimonial
@@ -74,7 +83,19 @@ const Testimonials = ({ title }) => {
                   <h5 className="text-lg md:text-xl font-medium text-blue-400">{t.personName}</h5>
                   <p className="text-sm md:text-lg text-gray-200 mb-2 truncate">{t.companyName}</p>
                   <p className="italic text-gray-300">
-                    {(t.review || "").length > 100 ? `${t.review.slice(0, 100)}...` : t.review}
+                    {(t.review || "").length > 80 ? (
+                      <>
+                        {expandedReviews[t._id] ? t.review : `${t.review.slice(0, 80)}...`}
+                        <button
+                          onClick={() => toggleReviewExpand(t._id)}
+                          className="ml-2 text-blue-400 cursor-pointer hover:text-blue-300 font-medium underline"
+                        >
+                          {expandedReviews[t._id] ? "see less" : "see more"}
+                        </button>
+                      </>
+                    ) : (
+                      t.review
+                    )}
                   </p>
                 </div>
               ))}
