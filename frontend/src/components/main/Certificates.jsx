@@ -1,4 +1,5 @@
 import { certificates } from "../../data/certificates";
+import { FaAnglesRight } from "react-icons/fa6";
 
 const Certificates = ({ title }) => {
   return (
@@ -19,7 +20,7 @@ const Certificates = ({ title }) => {
               {cert.link && (
                 <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-[15px] flex justify-center items-center group">
                   <span className="group-hover:underline">View Certificate</span>
-                  <i className="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
+                  <FaAnglesRight className="group-hover:animate-pulse ml-2" aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -37,7 +38,7 @@ const Certificates = ({ title }) => {
               {cert.link && (
                 <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-[15px] flex justify-center items-center group">
                   <span className="group-hover:underline">View Certificate</span>
-                  <i className="fa-solid fa-angles-right group-hover:animate-pulse ml-2" aria-hidden="true"></i>
+                  <FaAnglesRight className="group-hover:animate-pulse ml-2" aria-hidden="true" />
                 </a>
               )}
             </div>

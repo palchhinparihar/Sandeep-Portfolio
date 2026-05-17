@@ -1,5 +1,6 @@
 import { images } from "../../data/gallery";
 import CircularGallery from "../layout/CircularGallery";
+import { FaRightLong } from "react-icons/fa6";
 
 const Gallery = ({ title }) => {
   return (
@@ -28,7 +29,7 @@ const Gallery = ({ title }) => {
 
         <p className="flex gap-2 justify-end items-center">
           <span className="text-gray-500">Swipe to see more</span>
-          <i className="fa-solid fa-right-long animate-pulse text-gray-300"></i>
+          <FaRightLong className="animate-pulse text-gray-300" aria-hidden="true" />
         </p>
       </div>
     </section>

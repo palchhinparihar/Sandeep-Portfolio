@@ -38,7 +38,7 @@ const Navbar = ({ title }) => {
               aria-label={social.ariaLabel}
               className="pt-1 text-white text-xl hover:text-blue-400 transition-colors"
             >
-              <i className={`${social.iconClass} text-white`}></i>
+              <social.icon className="text-white" aria-hidden="true" />
             </a>
           ))}
         </div>

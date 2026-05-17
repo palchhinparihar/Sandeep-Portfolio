@@ -25,15 +25,15 @@ const Contact = ({ title }) => {
                 rel="noopener noreferrer"
                 aria-label={social.ariaLabel}
                 data-aos={social.aos}
-                className={`inline-block ${
+                className={`flex justify-center items-center ${
                   social.title === "WhatsApp"
                     ? "bg-green-500 hover:bg-green-600"
-                    : "bg-blue-500 hover:bg-blue-600"
-                } text-white font-semibold px-6 py-3.5 rounded-lg transition text-xl`}
+                    : "bg-yellow-500 hover:bg-yellow-600"
+                } text-white font-semibold px-6 py-3.5 rounded-lg transition text-base md:text-xl`}
               >
-                <i className={`${social.iconClass} mr-2`}></i>
-                <span>{social.title === "WhatsApp" && "Chat on WhatsApp"}</span>
+                <social.icon className="mr-2" aria-hidden="true" />
                 <span>{social.title === "Mail" && "Send an Email"}</span>
+                <span>{social.title === "WhatsApp" && "Chat on WhatsApp"}</span>
               </a>
             ))}
         </div>
@@ -53,9 +53,9 @@ const Contact = ({ title }) => {
                   title={social.title}
                   aria-label={social.ariaLabel}
                   data-aos={social.aos}
-                  className="text-3xl md:text-5xl hover:scale-105 border-2 hover:border-dotted py-5 px-6 rounded-full hover:border-blue-400 hover:text-gray-300  transition duration-300"
+                  className={`text-3xl md:text-4xl hover:scale-105 border-2 group hover:border-dotted ${social.title === "LinkedIn" ? "hover:border-blue-400 hover:text-blue-500" : "hover:border-pink-500 hover:text-pink-500"} p-5 rounded-full transition duration-300`}
                 >
-                  <i className={social.iconClass}></i>
+                  <social.icon aria-hidden="true" />
                 </a>
               ))}
           </div>
