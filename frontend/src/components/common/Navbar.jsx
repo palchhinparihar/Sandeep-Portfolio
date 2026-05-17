@@ -16,14 +16,10 @@ const Navbar = ({ title }) => {
   ];
 
   return (
-    <nav className="sticky top-0 bg-[#020813]/20 text-white z-50 backdrop-blur-lg px-3 md:py-4">
+    <nav className="sticky top-0 bg-[#020813]/20 text-white z-50 backdrop-blur-lg px-3 md:py-1">
       <div className="container mx-auto lg:px-6 py-3 flex items-center justify-between gap-3">
-        {/* Brand */}
-        <a className="w-full font-bold hidden md:block text-white lg:text-lg hover:text-gray-200" href="/">
-          {title}
-        </a>
-        <a className="font-bold md:hidden block text-white" href="/">
-          <img src={headerIcon} alt="Sandeep Singh" className="w-8" />
+        <a href="/">
+          <img src={headerIcon} alt="Sandeep Singh" className="w-30" />
         </a>
 
         {/* Social Icons - Mobile Only */}
