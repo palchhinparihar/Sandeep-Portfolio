@@ -1,146 +1,106 @@
 # Sandeep Portfolio
 
-A personal portfolio project showcasing Sandeep's work, skills and contact information. This repository contains a frontend (built with Vite) and a backend (API and/or content serving). The repository is organized to separate concerns so the frontend can be developed and deployed independently from the backend.
+Personal freelance client portfolio website for Sandeep, built as a split frontend/backend project. The frontend presents the portfolio experience, and the backend serves the testimonials API used by the site.
 
-Table of contents
-- [Project overview](#project-overview)
-- [Tech stack](#tech-stack)
-- [Repository structure](#repository-structure)
-- [Getting started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Frontend - local setup](#frontend---local-setup)
-  - [Backend - local setup](#backend---local-setup)
-  - [Run frontend + backend together](#run-frontend--backend-together)
-- [Build & deploy](#build--deploy)
-- [Environment variables](#environment-variables)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+## Overview
 
-## Project overview
-This repository contains the source code for Sandeep's portfolio website. It includes:
-- A frontend app (UI) located in `frontend/` (Vite-based).
-- A backend service located in `backend/` (API, content management or server-side rendering — check backend folder for details).
+- Frontend: React + Vite app in [frontend/](frontend)
+- Backend: Express + MongoDB API in [backend/](backend)
+- Main content: home, about, experience, certificates, clients, gallery, skills, testimonials, and contact sections
 
-The goal is to present Sandeep's projects, experience, and contact information in a clean, responsive layout.
+## Tech Stack
 
-## Tech stack
-- Frontend: Vite (see `frontend/package.json` for the exact framework and dependencies)
-- Backend: (see `backend/` for implementation details — could be Node/Express, Next.js API routes, or another server)
-- Build tooling: Vite, npm/yarn
-- Optional: any 3rd-party services or databases referenced in backend configuration
+- React 19
+- Vite 6
+- Tailwind CSS 4
+- Framer Motion
+- AOS
+- React Router
+- Express 5
+- MongoDB with Mongoose
 
-## Repository structure
-- frontend/ — the client application (HTML/CSS/JS, Vite config, package.json)
-  - public/ — static assets
-  - src/ — source code for the frontend
-- backend/ — backend API or server code
-- README.md — this document
+## Repository Structure
 
-Note: Each subfolder may contain its own README with more precise instructions. Start by checking `frontend/README.md` and `backend/README.md` if present.
+- [frontend/](frontend) - client application
+  - [frontend/src/](frontend/src) - React source code
+  - [frontend/public/](frontend/public) - static assets
+- [backend/](backend) - API server and database models
+- [README.md](README.md) - project overview and setup
 
-## Getting started
+## Local Setup
 
 ### Prerequisites
-- Node.js (LTS recommended)
-- npm (or yarn/pnpm)
-- Git
 
-### Frontend - local setup
-1. Open a terminal and change to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-4. Open the app in your browser. Vite typically serves at http://localhost:5173 (check terminal output).
+- Node.js 18 or newer
+- npm
+- MongoDB connection string for the backend
 
-If you need to build for production:
+### Frontend
+
 ```bash
-npm run build
-# preview the production build
-npm run preview
+cd frontend
+npm install
+npm run dev
 ```
 
-Check `frontend/package.json` for the exact script names and the frontend framework (React / Vue / Svelte / Vanilla).
+The frontend development server runs on the default Vite port, usually http://localhost:5173.
 
-### Backend - local setup
-1. Change to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
-3. Configure environment variables (see the [Environment variables](#environment-variables) section).
-4. Start the backend server:
-   ```bash
-   npm start
-   # or
-   npm run dev
-   ```
-The exact commands depend on the backend implementation. If a `backend/README.md` exists, follow its instructions.
+Available scripts in [frontend/package.json](frontend/package.json):
 
-### Run frontend + backend together
-Open two terminals:
-- Terminal 1:
-  ```bash
-  cd backend
-  npm run dev
-  ```
-- Terminal 2:
-  ```bash
-  cd frontend
-  npm run dev
-  ```
+- `npm run dev` - start the dev server
+- `npm run build` - build for production
+- `npm run preview` - preview the production build
+- `npm run lint` - run ESLint
 
-If the frontend needs to call the backend API, ensure the frontend's API base URL points to the backend's running URL (e.g., `http://localhost:5000`).
+### Backend
 
-## Build & deploy
-- Build the frontend: `cd frontend && npm run build`
-- Build or prepare the backend per the backend project's instructions.
-- Deploy static frontend assets to a static host (Netlify, Vercel, GitHub Pages, S3 + CloudFront) or serve them via the backend.
-- Deploy the backend to a node hosting provider (Heroku, Render, Railway, DigitalOcean, AWS, etc.), and configure environment variables there.
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-## Environment variables
-Create a `.env` file in the appropriate directory (backend and/or frontend) and add required keys. Common examples:
-- Backend:
-  - PORT=5000
-  - DATABASE_URL=your_database_connection_string
-  - JWT_SECRET=your_jwt_secret
-- Frontend:
-  - VITE_API_BASE_URL=http://localhost:5000
+The backend listens on port 3000 by default, as defined in [backend/index.js](backend/index.js).
 
-Always avoid committing secrets to the repository. Add `.env` to `.gitignore`.
+Create a [backend/.env](backend/.env) file with:
 
-## Contributing
-Contributions are welcome. Suggested workflow:
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Make changes, add tests if applicable.
-4. Commit and push your branch.
-5. Open a pull request describing the change.
+```bash
+DB_URI=your_mongodb_connection_string
+```
 
-Please run linters and tests (if any) before opening a PR.
+## Running the Full App
 
-## License
-No license is specified in this repository. If you want to apply a license, add a `LICENSE` file (for example, MIT). If you're the repository owner, choose an appropriate open-source license.
+1. Start the backend from [backend/](backend).
+2. Start the frontend from [frontend/](frontend).
+3. Open the frontend in your browser and verify the testimonials section loads data from the API.
+
+Note: the frontend currently points testimonials requests to the deployed API URL in [frontend/src/api/testimonials.js](frontend/src/api/testimonials.js). If you want to test locally, switch that base URL to `http://localhost:3000/api/testimonials`.
+
+## API Endpoints
+
+The backend exposes the testimonials routes under `/api/testimonials`.
+
+- `GET /` - health message
+- `GET /api/testimonials` - fetch all testimonials
+- `POST /api/testimonials` - add a testimonial
+
+Required POST body fields:
+
+- `personName`
+- `companyName`
+- `review`
+
+## Deployment Notes
+
+- Build the frontend with `npm run build` in [frontend/](frontend)
+- Configure the backend environment variables in your hosting provider
+- Update the frontend testimonials API base URL if your backend is not using the deployed Render endpoint
+
+## Related Docs
+
+- [frontend/README.md](frontend/README.md)
+- [backend/README.md](backend/README.md)
 
 ## Contact
-- GitHub: [palchhinparihar](https://github.com/palchhinparihar)
-- For questions or feature requests, open an issue in this repository.
 
-Thank you for checking out the Sandeep Portfolio repository!
+- GitHub: [palchhinparihar](https://github.com/palchhinparihar)
