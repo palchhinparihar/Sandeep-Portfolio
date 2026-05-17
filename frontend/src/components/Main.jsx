@@ -1,0 +1,47 @@
+import Home from "./main/Home";
+import About from "./main/About";
+import Experience from "./main/Experience";
+import Certificates from "./main/Certificates";
+import Clients from "./main/Clients";
+import Skills from "./main/Skills";
+import Contact from "./main/Contact";
+import Testimonials from "./main/Testimonials";
+import Gallery from "./main/Gallery";
+import Galaxy from "./layout/Galaxy";
+
+const Main = () => {
+  return (
+    <>
+      <div className="fixed top-0 left-0 w-full h-full -z-10">
+        <Galaxy
+          mouseRepulsion
+          mouseInteraction
+          density={1}
+          glowIntensity={0.3}
+          saturation={0}
+          hueShift={140}
+          twinkleIntensity={0.3}
+          rotationSpeed={0.1}
+          repulsionStrength={2}
+          autoCenterRepulsion={0}
+          starSpeed={0.5}
+          speed={1}
+        />
+      </div>
+
+      <main className="min-h-screen text-white">
+        <Home title="Sandeep Singh" />
+        <About title="About Me" />
+        <Experience title="Experience" />
+        <Certificates title="Certificates" />
+        <Testimonials title="What People Say" />
+        <Clients title="Clients" />
+        <Gallery title="Gallery" />
+        <Skills title="Technical Skills" />
+        <Contact title="Contact Me" />
+      </main>
+    </>
+  )
+}
+
+export default Main;

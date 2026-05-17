@@ -1,4 +1,4 @@
-import Stepper, { Step } from "../common/Stepper";
+import Stepper, { Step } from "../layout/Stepper";
 import { experiences } from "../../data/experiences";
 
 const Experience = ({ title }) => {

@@ -1,6 +1,6 @@
 import Navbar from "./components/common/Navbar";
 import ScrollToTop from "./components/common/ScrollToTop";
-import Main from "./components/common/Main";
+import Main from "./components/Main";
 import Footer from "./components/common/Footer";
 import Toastify from "./components/common/Toastify";
 

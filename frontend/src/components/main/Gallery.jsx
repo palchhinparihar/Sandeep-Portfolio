@@ -1,5 +1,5 @@
 import { images } from "../../data/gallery";
-import CircularGallery from "../common/CircularGallery";
+import CircularGallery from "../layout/CircularGallery";
 
 const Gallery = ({ title }) => {
   return (
