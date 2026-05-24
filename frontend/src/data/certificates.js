@@ -1,5 +1,6 @@
 import Certificate1 from "../assets/certificate-1.jpeg";
 import Certificate2 from "../assets/certificate-2.jpeg";
+import Certificate3 from "../assets/certificate-3.jpg";
 
 export const certificates = {
   language: [
@@ -28,6 +29,12 @@ export const certificates = {
       issuer: "ETOOS Education, South Korea",
       year: "2017-2018",
       link: "https://acrobat.adobe.com/id/urn:aaid:sc:AP:d93f5650-f11f-4a58-b346-29e09efaa11a",
+    },
+    {
+      title: "Professional Medical and Pharmaceutical Audit Interpretation Certificate – Korean-to-English",
+      issuer: "Shilpa Pharma Lifesciences Limited, India",
+      year: "2026",
+      link: Certificate3,
     }
   ],
 };

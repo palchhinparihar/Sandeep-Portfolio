@@ -19,6 +19,9 @@ import img18 from "../assets/gallery/18.jpeg";
 import img19 from "../assets/gallery/19.jpeg";
 import img20 from "../assets/gallery/20.jpeg";
 import img21 from "../assets/gallery/21.jpeg";
+import img22 from "../assets/gallery/22.jpeg";
+import img23 from "../assets/gallery/23.jpeg";
+import img24 from "../assets/gallery/24.jpeg";
 
 // Create items array with captions
 export const images = [
@@ -43,4 +46,7 @@ export const images = [
   { image: img19, text: "19" },
   { image: img20, text: "20" },
   { image: img21, text: "21" },
+  { image: img22, text: "22" },
+  { image: img23, text: "23" },
+  { image: img24, text: "24" },
 ];

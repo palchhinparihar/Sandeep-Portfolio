@@ -36,6 +36,7 @@ export const clients = [
   "Repute Health Care Korea",
   "Sohan Healthcare Pune",
   "Encube Ethicals Goa",
+  "Shilpa Pharma Lifesciences",
 
   // Finance & Others
   "NH Capital",
