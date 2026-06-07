@@ -17,6 +17,7 @@ export const clients = [
   "Samoh Pharma Korea",
   "S.Y. System Korea",
   "Bayer Korea",
+  "CKD (Chong Kun Dang) Korea",
 
   // Indian Pharmaceutical Companies
   "Dr. Reddy's",
@@ -37,6 +38,7 @@ export const clients = [
   "Sohan Healthcare Pune",
   "Encube Ethicals Goa",
   "Shilpa Pharma Lifesciences",
+  "Alivus Life Sciences Limited",
 
   // Finance & Others
   "NH Capital",
