@@ -49,10 +49,14 @@ router.post("/", async (req, res) => {
 // Update a testimonial by ID
 router.patch("/:id", requireAdmin, async (req, res) => {
   const { id } = req.params;
-  const { personName, companyName, review } = req.body;
+
+  if (req.body === undefined || Object.keys(req.body).length === 0) {
+    return res.status(400).json({ success: false, message: "Please provide at least one of the required fields." });
+  }
+  const { personName, companyName } = req.body;
 
   try {
-    if (!personName && !companyName && !review) {
+    if (!personName && !companyName) {
       return res.status(400).json({ success: false, message: "Please provide at least one of the required fields." });
     }
 
@@ -61,7 +65,6 @@ router.patch("/:id", requireAdmin, async (req, res) => {
       {
         ...(personName && { personName: capitalizeFirst(personName) }),
         ...(companyName && { companyName: capitalizeFirst(companyName) }),
-        ...(review && { review: capitalizeFirst(review) })
       },
       { new: true }
     );
