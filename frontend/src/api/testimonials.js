@@ -34,7 +34,7 @@ export const addTestimonial = async (testimonialData) => {
 };
 
 // Update a testimonial by ID
-export const updateTestimonial = async (id, testimonialData, role) => {
+export const updateTestimonial = async (id, testimonialData) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
