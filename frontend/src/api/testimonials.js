@@ -32,3 +32,22 @@ export const addTestimonial = async (testimonialData) => {
     return { message: error.message || "An error occurred while adding testimonial" };
   }
 };
+
+// Update a testimonial by ID
+export const updateTestimonial = async (id, testimonialData, role) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(testimonialData),
+    });
+    if (!res.ok) throw new Error("Failed to update testimonial");
+    
+    const data = await res.json();
+    if (data.success) return { testimonial: data.testimonial, message: data.message || "Testimonial updated successfully" };
+  } catch (error) {
+    return { message: error.message || "An error occurred while updating testimonial" };
+  }
+};
