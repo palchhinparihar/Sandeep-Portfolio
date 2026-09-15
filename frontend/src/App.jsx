@@ -6,20 +6,18 @@ import Toastify from "./components/common/Toastify";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Main from "./components/Main";
 import Footer from "./components/common/Footer";
-import Login from "./components/admin/Login";
+import AdminRoute from "./components/admin/AdminRoute";
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
     });
   }, []);
-  
+
   const portfolio = (
     <>
       <Navbar title="Sandeep Singh" />
@@ -32,12 +30,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <Toastify />
+
       <Routes>
-        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/*" element={<AdminRoute />} />
         <Route path="*" element={portfolio} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
