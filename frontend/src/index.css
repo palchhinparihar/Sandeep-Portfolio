@@ -37,6 +37,6 @@ body {
 
 @media (min-width: 600px) {
   .animate-scroll {
-    animation: scroll 40s linear infinite;
+    animation: scroll 55s linear infinite;
   }
 }
