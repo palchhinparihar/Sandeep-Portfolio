@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 const Testimonials = ({ title }) => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [expandedReviews, setExpandedReviews] = useState({});
   const [formData, setFormData] = useState({ personName: "", companyName: "", review: "" });
 
@@ -16,6 +18,7 @@ const Testimonials = ({ title }) => {
         setLoading(true); // Start loading
         const data = await getTestimonials();
         setTestimonials(data.testimonials || [] );
+        setVisibleCount(3);
       } catch (err) {
         console.error("Error fetching testimonials:", err);
       } finally {
@@ -38,6 +41,19 @@ const Testimonials = ({ title }) => {
       ...prev,
       [id]: !prev[id],
     }));
+  };
+
+  const handleShowMore = () => {
+    setLoadingMore(true);
+
+    setTimeout(() => {
+      setVisibleCount((currentCount) => currentCount + 3);
+      setLoadingMore(false);
+    }, 500);
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount(3);
   };
 
   // Submit new testimonial
@@ -74,11 +90,12 @@ const Testimonials = ({ title }) => {
           ) : testimonials?.length === 0 ? (
             <div data-aos="fade-in" className="text-lg md:text-2xl font-semibold text-gray-400">No testimonials yet. Add One.</div>
           ) : (
-            <div data-aos="fade-up" className="flex overflow-x-auto gap-6 pb-4 px-1 snap-x snap-mandatory scroll-smooth">
-              {testimonials.map((t, index) => (
+            <>
+              <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4 px-1">
+              {testimonials.slice(0, visibleCount).map((t, index) => (
                 <div
                   key={t._id || index}
-                  className="min-w-full md:min-w-1/3 bg-gray-800 p-6 rounded-xl shadow hover:shadow-blue-500/30 transition flex flex-col items-center gap-4"
+                  className="bg-gray-800 p-6 rounded-xl shadow hover:shadow-blue-500/30 transition flex flex-col items-center gap-4"
                 >
                   <h5 className="text-lg md:text-xl font-medium text-blue-400">{t.personName}</h5>
                   <p className="text-sm md:text-lg text-gray-200 mb-2 truncate">{t.companyName}</p>
@@ -99,7 +116,38 @@ const Testimonials = ({ title }) => {
                   </p>
                 </div>
               ))}
-            </div>
+              </div>
+
+              {(visibleCount < testimonials.length || visibleCount > 3) && (
+                <div className="mt-6">
+                  <div className="flex justify-center gap-3">
+                    {visibleCount < testimonials.length && (
+                      loadingMore ? (
+                        <div className="text-gray-500 animate-pulse">Loading testimonials...</div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={handleShowMore}
+                          className="rounded-lg cursor-pointer bg-blue-500 px-5 py-2 font-medium text-white transition hover:bg-blue-400"
+                        >
+                          Show more
+                        </button>
+                      )
+                    )}
+
+                    {visibleCount > 3 && (
+                      <button
+                        type="button"
+                        onClick={handleShowLess}
+                        className="rounded-lg cursor-pointer border border-blue-400 px-5 py-2 font-medium text-blue-400 transition hover:bg-blue-400 hover:text-white"
+                      >
+                        Show less
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
