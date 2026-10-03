@@ -1,5 +1,6 @@
 export const clients = [
   // Korean MNCs & Institutions
+
   "Hyundai",
   "LG Electronics",
   "Samsung",
@@ -18,8 +19,10 @@ export const clients = [
   "S.Y. System Korea",
   "Bayer Korea",
   "CKD (Chong Kun Dang) Korea",
+  "Kukjeon",
 
   // Indian Pharmaceutical Companies
+
   "Dr. Reddy's",
   "Mankind Pharma",
   "Laurus Labs",
@@ -39,7 +42,12 @@ export const clients = [
   "Encube Ethicals Goa",
   "Shilpa Pharma Lifesciences",
   "Alivus Life Sciences Limited",
+  "Granules India Limited",
+  "Biocon Limited",
+  "Synthemed Labs Private Limited",
+  "MSN Laboratories Private Limited",
 
   // Finance & Others
+
   "NH Capital",
 ];
