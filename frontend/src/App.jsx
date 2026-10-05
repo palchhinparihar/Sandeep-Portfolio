@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Navbar from "./components/common/Navbar";
 import Toastify from "./components/common/Toastify";
-import ScrollToTop from "./components/common/ScrollToTop";
-import Main from "./components/Main";
-import Footer from "./components/common/Footer";
+import Login from "./components/admin/Login";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminRoute from "./components/admin/AdminRoute";
+import PublicRoute from "./components/PublicRoute";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -18,22 +17,25 @@ const App = () => {
     });
   }, []);
 
-  const portfolio = (
-    <>
-      <Navbar title="Sandeep Singh" />
-      <ScrollToTop />
-      <Main />
-      <Footer />
-    </>
-  );
-
   return (
     <BrowserRouter>
       <Toastify />
 
       <Routes>
-        <Route path="/admin/*" element={<AdminRoute />} />
-        <Route path="*" element={portfolio} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Admin Routes */}
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute>
+              <AdminRoute />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Public Routes */}
+        <Route path="*" element={<PublicRoute />} />
       </Routes>
     </BrowserRouter>
   );

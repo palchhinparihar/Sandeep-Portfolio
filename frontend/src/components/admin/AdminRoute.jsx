@@ -6,48 +6,22 @@ import ProtectedRoute from "./ProtectedRoute";
 import ManageClients from "./clients/ManageClients";
 import AddClient from "./clients/AddClient";
 import EditClient from "./clients/EditClient";
+import AdminNavbar from "./AdminNavbar";
 
 const AdminRoute = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
+    <>
+      <AdminNavbar />
 
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/clients"
-        element={
-          <ProtectedRoute>
-            <ManageClients />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/clients/add"
-        element={
-          <ProtectedRoute>
-            <AddClient />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/clients/edit/:id"
-        element={
-          <ProtectedRoute>
-            <EditClient />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
+      <main className="min-h-screen">
+        <Routes>
+          <Route index element={<AdminDashboard />} />
+          <Route path="clients" element={<ManageClients />} />
+          <Route path="clients/add" element={<AddClient />} />
+          <Route path="clients/edit/:id" element={<EditClient />} />
+        </Routes>
+      </main>
+    </>
   );
 };
 
