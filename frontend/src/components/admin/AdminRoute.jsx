@@ -5,6 +5,7 @@ import AdminDashboard from "./AdminDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import ManageClients from "./clients/ManageClients";
 import AddClient from "./clients/AddClient";
+import EditClient from "./clients/EditClient";
 
 const AdminRoute = () => {
   return (
@@ -15,7 +16,7 @@ const AdminRoute = () => {
         path="/"
         element={
           <ProtectedRoute>
-<AdminDashboard />
+            <AdminDashboard />
           </ProtectedRoute>
         }
       />
@@ -34,6 +35,15 @@ const AdminRoute = () => {
         element={
           <ProtectedRoute>
             <AddClient />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/clients/edit/:id"
+        element={
+          <ProtectedRoute>
+            <EditClient />
           </ProtectedRoute>
         }
       />
