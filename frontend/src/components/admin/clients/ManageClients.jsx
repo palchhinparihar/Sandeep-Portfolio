@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../../../lib/supabase";
-import { FiPlus, FiEdit2, FiTrash2, FiAlertCircle } from "react-icons/fi";
+import {
+  FiPlus,
+  FiEdit2,
+  FiTrash2,
+  FiAlertCircle,
+  FiArrowLeft,
+} from "react-icons/fi";
 
 const ManageClients = () => {
   const [clients, setClients] = useState([]);
@@ -61,6 +67,15 @@ const ManageClients = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_30%)]" />
 
       <div className="relative mx-auto max-w-6xl">
+        <Link
+          to="/admin"
+          aria-label="Back to dashboard"
+          title="Back to dashboard"
+          className="mb-6 inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400/20 bg-[#07111f] p-2 text-slate-400 transition hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
+        >
+          <FiArrowLeft size={18} aria-hidden="true" />
+        </Link>
+
         {/* Header */}
         <div className="mb-10 flex flex-col gap-6 border-b border-blue-400/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>

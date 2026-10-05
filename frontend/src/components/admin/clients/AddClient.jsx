@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiAlertCircle, FiArrowLeft, FiPlus } from "react-icons/fi";
-import { capitalizeWords } from "../../../utils/captializeWords";
 import { supabase } from "../../../lib/supabase";
 
 const AddClient = () => {
@@ -21,7 +20,7 @@ const AddClient = () => {
 
     const { error } = await supabase.from("clients").insert([
       {
-        name: capitalizeWords(name.trim()),
+        name: name.trim(),
       },
     ]);
 
