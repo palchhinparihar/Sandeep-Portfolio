@@ -1,40 +1,22 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  FiPlus,
+  FiAlertCircle,
+  FiArrowLeft,
   FiEdit2,
+  FiPlus,
   FiTrash2,
-  FiX,
-  FiSave,
 } from "react-icons/fi";
-
 import { supabase } from "../../../lib/supabase";
-
-const initialForm = {
-  title: "",
-  start_date: "",
-  end_date: "",
-  is_current: false,
-  description: "",
-  points: [""],
-};
 
 const ManageExperiences = () => {
   const [experiences, setExperiences] = useState([]);
-  const [form, setForm] = useState(initialForm);
-  const [editingId, setEditingId] = useState(null);
-
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    fetchExperiences();
-  }, []);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchExperiences = async () => {
     setLoading(true);
-    setError("");
+    setErrorMessage("");
 
     const { data, error } = await supabase
       .from("experiences")
@@ -42,115 +24,19 @@ const ManageExperiences = () => {
       .order("start_date", { ascending: false });
 
     if (error) {
-      setError(error.message);
-    } else {
-      setExperiences(data || []);
+      console.error("Error fetching experiences:", error);
+      setErrorMessage(error.message);
+      setLoading(false);
+      return;
     }
 
+    setExperiences(data || []);
     setLoading(false);
   };
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-      ...(name === "is_current" && checked ? { end_date: "" } : {}),
-    }));
-  };
-
-  const handlePointChange = (index, value) => {
-    setForm((prev) => {
-      const points = [...prev.points];
-      points[index] = value;
-
-      return { ...prev, points };
-    });
-  };
-
-  const addPoint = () => {
-    setForm((prev) => ({
-      ...prev,
-      points: [...prev.points, ""],
-    }));
-  };
-
-  const removePoint = (index) => {
-    setForm((prev) => ({
-      ...prev,
-      points: prev.points.filter((_, i) => i !== index),
-    }));
-  };
-
-  const resetForm = () => {
-    setForm(initialForm);
-    setEditingId(null);
-    setShowForm(false);
-    setError("");
-  };
-
-  const handleEdit = (experience) => {
-    setForm({
-      title: experience.title || "",
-      start_date: experience.start_date || "",
-      end_date: experience.end_date || "",
-      is_current: experience.is_current || false,
-      description: experience.description || "",
-      points:
-        Array.isArray(experience.points) && experience.points.length
-          ? experience.points
-          : [""],
-    });
-
-    setEditingId(experience.id);
-    setShowForm(true);
-    setError("");
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSaving(true);
-    setError("");
-
-    const payload = {
-      title: form.title.trim(),
-      start_date: form.start_date,
-      end_date: form.is_current || !form.end_date ? null : form.end_date,
-      is_current: form.is_current,
-      description: form.description.trim(),
-      points: form.points.map((point) => point.trim()).filter(Boolean),
-    };
-
-    if (!payload.title || !payload.start_date || !payload.description) {
-      setError("Please fill in all required fields.");
-      setSaving(false);
-      return;
-    }
-
-    if (payload.end_date && payload.end_date < payload.start_date) {
-      setError("End date cannot be earlier than start date.");
-      setSaving(false);
-      return;
-    }
-
-    const result = editingId
-      ? await supabase
-          .from("experiences")
-          .update(payload)
-          .eq("id", editingId)
-      : await supabase.from("experiences").insert([payload]);
-
-    if (result.error) {
-      setError(result.error.message);
-      setSaving(false);
-      return;
-    }
-
-    resetForm();
-    await fetchExperiences();
-    setSaving(false);
-  };
+  useEffect(() => {
+    fetchExperiences();
+  }, []);
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm(
@@ -159,19 +45,21 @@ const ManageExperiences = () => {
 
     if (!confirmed) return;
 
-    setError("");
-
     const { error } = await supabase
       .from("experiences")
       .delete()
       .eq("id", id);
 
     if (error) {
-      setError(error.message);
+      console.error("Error deleting experience:", error);
+      setErrorMessage(error.message);
       return;
     }
 
-    setExperiences((prev) => prev.filter((item) => item.id !== id));
+    setErrorMessage("");
+    setExperiences((previousExperiences) =>
+      previousExperiences.filter((experience) => experience.id !== id)
+    );
   };
 
   const formatDate = (date) => {
@@ -184,280 +72,121 @@ const ManageExperiences = () => {
   };
 
   return (
-    <section className="space-y-6 p-4 md:p-6">
-      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-        <div>
-          <h1 className="text-2xl font-semibold">Manage Experience</h1>
-          <p className="mt-1 text-sm text-gray-500">
-            Add, edit, and manage your professional experience.
-          </p>
-        </div>
+    <div className="relative min-h-screen overflow-hidden bg-[#020813] px-4 py-10 text-white sm:px-6 lg:py-16">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_30%)]" />
 
-        <button
-          type="button"
-          onClick={() => {
-            resetForm();
-            setShowForm(true);
-          }}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-black px-4 py-2.5 text-sm text-white transition hover:bg-gray-800"
+      <div className="relative mx-auto max-w-6xl">
+        <Link
+          to="/admin"
+          aria-label="Back to dashboard"
+          title="Back to dashboard"
+          className="mb-6 inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400/20 bg-[#07111f] p-2 text-slate-400 transition hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
         >
-          <FiPlus />
-          Add Experience
-        </button>
-      </div>
+          <FiArrowLeft size={18} aria-hidden="true" />
+        </Link>
 
-      {error && (
-        <div className="flex items-start justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-          <p>{error}</p>
-          <button
-            type="button"
-            onClick={() => setError("")}
-            aria-label="Dismiss error"
+        <div className="mb-10 flex flex-col gap-6 border-b border-blue-400/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-3 text-sm font-medium uppercase tracking-[0.24em] text-blue-400">
+              Portfolio content
+            </p>
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Experiences
+            </h1>
+            <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">
+              Manage the professional experience displayed on your portfolio.
+            </p>
+          </div>
+
+          <Link
+            to="/admin/experiences/add"
+            className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
           >
-            <FiX />
-          </button>
+            <FiPlus className="mr-1.5" aria-hidden="true" />
+            Add Experience
+          </Link>
         </div>
-      )}
 
-      {showForm && (
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
-        >
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">
-              {editingId ? "Edit Experience" : "Add Experience"}
-            </h2>
-
-            <button
-              type="button"
-              onClick={resetForm}
-              className="rounded-lg p-2 hover:bg-gray-100"
-              aria-label="Close form"
+        <div className="rounded-2xl p-4 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-6">
+          {errorMessage ? (
+            <div
+              role="alert"
+              className="flex items-start gap-3 rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-sm text-red-200"
             >
-              <FiX />
-            </button>
-          </div>
-
-          <div>
-            <label className="mb-1 block text-sm font-medium">
-              Title *
-            </label>
-            <input
-              name="title"
-              value={form.title}
-              onChange={handleChange}
-              required
-              placeholder="e.g. Full Stack Developer"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-600"
-            />
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="mb-1 block text-sm font-medium">
-                Start Date *
-              </label>
-              <input
-                type="date"
-                name="start_date"
-                value={form.start_date}
-                onChange={handleChange}
-                required
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-600"
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Choose the first day of the month.
-              </p>
+              <FiAlertCircle className="mt-0.5 shrink-0 text-red-300" aria-hidden="true" />
+              <div>
+                <p className="font-semibold">Experience action failed</p>
+                <p className="mt-1 text-red-200/80">{errorMessage}</p>
+              </div>
             </div>
-
-            <div>
-              <label className="mb-1 block text-sm font-medium">
-                End Date
-              </label>
-              <input
-                type="date"
-                name="end_date"
-                value={form.end_date}
-                onChange={handleChange}
-                disabled={form.is_current}
-                min={form.start_date || undefined}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-600 disabled:bg-gray-100"
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Leave empty if not applicable.
-              </p>
+          ) : loading ? (
+            <div className="p-6 text-slate-400">Loading experiences...</div>
+          ) : experiences.length === 0 ? (
+            <div className="p-6 text-slate-400">
+              No experiences found.
             </div>
-          </div>
+          ) : (
+            <div className="space-y-4">
+              {experiences.map((experience) => (
+                <article
+                  key={experience.id}
+                  className="rounded-xl border border-blue-400/20 bg-[#07111f]/85 p-5 transition hover:border-blue-400/50"
+                >
+                  <div className="flex flex-col justify-between gap-4 sm:flex-row">
+                    <div className="min-w-0">
+                      <h2 className="text-lg font-semibold text-white">
+                        {experience.title}
+                      </h2>
+                      <p className="mt-1 text-sm text-slate-400">
+                        {formatDate(experience.start_date)} -{" "}
+                        {experience.is_current
+                          ? "Present"
+                          : formatDate(experience.end_date)}
+                      </p>
+                      {experience.is_current && (
+                        <span className="mt-2 inline-block rounded-full bg-green-400/10 px-2.5 py-1 text-xs font-medium text-green-300">
+                          Current
+                        </span>
+                      )}
+                      <p className="mt-3 whitespace-pre-line text-sm leading-6 text-slate-300">
+                        {experience.description}
+                      </p>
+                      {experience.points?.length > 0 && (
+                        <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-slate-400">
+                          {experience.points.map((point, index) => (
+                            <li key={`${experience.id}-${index}`}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
 
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              name="is_current"
-              checked={form.is_current}
-              onChange={handleChange}
-              className="h-4 w-4"
-            />
-            This is my current experience
-          </label>
-
-          <div>
-            <label className="mb-1 block text-sm font-medium">
-              Description *
-            </label>
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleChange}
-              required
-              rows={4}
-              placeholder="Describe your role and responsibilities..."
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-600"
-            />
-          </div>
-
-          <div>
-            <div className="mb-2 flex items-center justify-between gap-3">
-              <label className="text-sm font-medium">Key Points</label>
-
-              <button
-                type="button"
-                onClick={addPoint}
-                className="inline-flex items-center gap-1 text-sm font-medium hover:text-gray-500"
-              >
-                <FiPlus />
-                Add point
-              </button>
-            </div>
-
-            <div className="space-y-2">
-              {form.points.map((point, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <input
-                    value={point}
-                    onChange={(e) =>
-                      handlePointChange(index, e.target.value)
-                    }
-                    placeholder={`Key point ${index + 1}`}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-600"
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() => removePoint(index)}
-                    disabled={form.points.length === 1}
-                    className="rounded-lg p-2 text-gray-500 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-30"
-                    aria-label={`Remove point ${index + 1}`}
-                  >
-                    <FiTrash2 />
-                  </button>
-                </div>
+                    <div className="flex shrink-0 items-start gap-2">
+                      <Link
+                        to={`/admin/experiences/edit/${experience.id}`}
+                        aria-label={`Edit ${experience.title}`}
+                        title="Edit experience"
+                        className="cursor-pointer rounded-lg p-2 text-slate-400 transition hover:bg-blue-500/10 hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
+                      >
+                        <FiEdit2 aria-hidden="true" />
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(experience.id)}
+                        aria-label={`Delete ${experience.title}`}
+                        title="Delete experience"
+                        className="cursor-pointer rounded-lg p-2 text-slate-400 transition hover:bg-red-400/10 hover:text-red-300 focus:outline-none focus:ring-2 focus:ring-red-400/40"
+                      >
+                        <FiTrash2 aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
-          </div>
-
-          <div className="flex flex-wrap justify-end gap-3 border-t border-gray-100 pt-4">
-            <button
-              type="button"
-              onClick={resetForm}
-              className="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50"
-            >
-              Cancel
-            </button>
-
-            <button
-              type="submit"
-              disabled={saving}
-              className="inline-flex items-center gap-2 rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-50"
-            >
-              <FiSave />
-              {saving
-                ? "Saving..."
-                : editingId
-                  ? "Update Experience"
-                  : "Save Experience"}
-            </button>
-          </div>
-        </form>
-      )}
-
-      {loading ? (
-        <p className="py-10 text-center text-sm text-gray-500">
-          Loading experiences...
-        </p>
-      ) : experiences.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-gray-300 p-10 text-center">
-          <p className="font-medium">No experiences added yet.</p>
-          <p className="mt-1 text-sm text-gray-500">
-            Click "Add Experience" to create your first entry.
-          </p>
+          )}
         </div>
-      ) : (
-        <div className="space-y-4">
-          {experiences.map((experience) => (
-            <article
-              key={experience.id}
-              className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
-            >
-              <div className="flex flex-col justify-between gap-4 sm:flex-row">
-                <div className="min-w-0">
-                  <h3 className="text-lg font-semibold">
-                    {experience.title}
-                  </h3>
-
-                  <p className="mt-1 text-sm text-gray-500">
-                    {formatDate(experience.start_date)} –{" "}
-                    {experience.is_current
-                      ? "Present"
-                      : formatDate(experience.end_date)}
-                  </p>
-
-                  {experience.is_current && (
-                    <span className="mt-2 inline-block rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
-                      Current
-                    </span>
-                  )}
-
-                  <p className="mt-3 whitespace-pre-line text-sm leading-6 text-gray-700">
-                    {experience.description}
-                  </p>
-
-                  {experience.points?.length > 0 && (
-                    <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-gray-600">
-                      {experience.points.map((point, index) => (
-                        <li key={`${experience.id}-${index}`}>{point}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                <div className="flex shrink-0 items-start gap-2">
-                  <button
-                    type="button"
-                    onClick={() => handleEdit(experience)}
-                    className="rounded-lg border border-gray-200 p-2.5 hover:bg-gray-100"
-                    aria-label={`Edit ${experience.title}`}
-                    title="Edit experience"
-                  >
-                    <FiEdit2 />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(experience.id)}
-                    className="rounded-lg border border-gray-200 p-2.5 text-red-600 hover:bg-red-50"
-                    aria-label={`Delete ${experience.title}`}
-                    title="Delete experience"
-                  >
-                    <FiTrash2 />
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
-    </section>
+      </div>
+    </div>
   );
 };
 

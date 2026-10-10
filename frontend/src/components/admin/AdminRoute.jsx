@@ -27,6 +27,7 @@ const AdminRoute = () => {
           {/* Experiences */}
           <Route path="experiences" element={<ManageExperiences />} />
           <Route path="experiences/add" element={<AddExperience />} />
+          <Route path="experiences/edit/:id" element={<AddExperience />} />
         </Routes>
       </main>
     </>
