@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaComments, FaUsers } from "react-icons/fa6";
+import { FaArrowRight, FaBriefcase, FaComments, FaUsers } from "react-icons/fa6";
 
 const AdminDashboard = () => {
   return (
@@ -22,24 +22,24 @@ const AdminDashboard = () => {
 
         {/* Management Sections */}
         <div className="grid gap-5 md:grid-cols-2">
-          {/* Clients */}
+          {/* Experience */}
           <Link
-            to="/admin/clients"
+            to="/admin/experiences"
             className="group rounded-2xl border border-blue-400/20 bg-[#07111f]/85 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:shadow-[0_24px_80px_rgba(37,99,235,0.18)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 sm:p-8"
           >
             <div className="mb-8 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-blue-500/10 text-lg font-bold text-blue-400">
-              <FaUsers aria-hidden="true" />
+              <FaBriefcase aria-hidden="true" />
             </div>
             <h2 className="text-xl font-semibold text-white">
-              Clients
+              Experience
             </h2>
 
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Add, edit, or remove client names displayed on the portfolio.
+              Manage roles, companies, durations, and professional milestones.
             </p>
 
             <span className="mt-6 inline-block text-sm font-medium text-blue-400 transition-colors group-hover:text-blue-300">
-              Manage Clients <FaArrowRight className="ml-1 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              Manage Experience <FaArrowRight className="ml-1 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Link>
 
@@ -63,6 +63,27 @@ const AdminDashboard = () => {
               Manage Testimonials <FaArrowRight className="ml-1 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Link>
+
+          {/* Clients */}
+          <Link
+            to="/admin/clients"
+            className="group rounded-2xl border border-blue-400/20 bg-[#07111f]/85 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:shadow-[0_24px_80px_rgba(37,99,235,0.18)] focus:outline-none focus:ring-2 focus:ring-blue-400/40 sm:p-8"
+          >
+            <div className="mb-8 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-blue-500/10 text-lg font-bold text-blue-400">
+              <FaUsers aria-hidden="true" />
+            </div>
+            <h2 className="text-xl font-semibold text-white">
+              Clients
+            </h2>
+
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Add, edit, or remove client names displayed on the portfolio.
+            </p>
+
+            <span className="mt-6 inline-block text-sm font-medium text-blue-400 transition-colors group-hover:text-blue-300">
+              Manage Clients <FaArrowRight className="ml-1 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </Link>          
         </div>
       </div>
     </div>
