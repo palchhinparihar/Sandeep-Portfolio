@@ -27,8 +27,8 @@ const AdminNavbar = () => {
       icon: FiGrid,
     },
     {
-      name: "Experience",
-      path: "/admin/experience",
+      name: "Experiences",
+      path: "/admin/experiences",
       icon: FiBriefcase,
     },
     {
