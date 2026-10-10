@@ -9,6 +9,7 @@ import EditClient from "./clients/EditClient";
 
 import ManageExperiences from "./experiences/ManageExperiences";
 import AddExperience from "./experiences/AddExperience";
+import EditExperience from "./experiences/EditExperience";
 
 const AdminRoute = () => {
   return (
@@ -27,7 +28,7 @@ const AdminRoute = () => {
           {/* Experiences */}
           <Route path="experiences" element={<ManageExperiences />} />
           <Route path="experiences/add" element={<AddExperience />} />
-          <Route path="experiences/edit/:id" element={<AddExperience />} />
+          <Route path="experiences/edit/:id" element={<EditExperience />} />
         </Routes>
       </main>
     </>

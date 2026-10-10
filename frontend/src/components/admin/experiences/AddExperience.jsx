@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FiAlertCircle,
   FiArrowLeft,
@@ -20,47 +20,10 @@ const initialForm = {
 };
 
 const AddExperience = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const isEditing = Boolean(id);
   const [form, setForm] = useState(initialForm);
-  const [loading, setLoading] = useState(isEditing);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchExperience = async () => {
-      const { data, error: fetchError } = await supabase
-        .from("experiences")
-        .select("*")
-        .eq("id", id)
-        .single();
-
-      if (fetchError) {
-        console.error("Error fetching experience:", fetchError);
-        setError(fetchError.message);
-        setLoading(false);
-        return;
-      }
-
-      setForm({
-        title: data.title || "",
-        start_date: data.start_date || "",
-        end_date: data.end_date || "",
-        is_current: data.is_current || false,
-        description: data.description || "",
-        points:
-          Array.isArray(data.points) && data.points.length
-            ? data.points
-            : [""],
-      });
-      setLoading(false);
-    };
-
-    fetchExperience();
-  }, [id]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -128,23 +91,6 @@ const AddExperience = () => {
 
     setSaving(true);
 
-    if (isEditing) {
-      const { error: updateError } = await supabase
-        .from("experiences")
-        .update(payload)
-        .eq("id", id);
-
-      if (updateError) {
-        console.error("Error updating experience:", updateError);
-        setError(updateError.message);
-        setSaving(false);
-        return;
-      }
-
-      navigate("/admin/experiences");
-      return;
-    }
-
     // Get the current highest sort order before inserting a new experience.
     const { data: lastExperience, error: fetchError } = await supabase
       .from("experiences")
@@ -175,17 +121,6 @@ const AddExperience = () => {
     navigate("/admin/experiences");
   };
 
-  if (loading) {
-    return (
-      <div className="relative min-h-screen overflow-hidden bg-[#020813] px-4 py-10 text-white sm:px-6 lg:py-16">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_30%)]" />
-        <div className="relative mx-auto max-w-3xl">
-          <p className="text-slate-400">Loading experience...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#020813] px-4 py-10 text-white sm:px-6 lg:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_30%)]" />
@@ -205,12 +140,10 @@ const AddExperience = () => {
           Portfolio content
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          {isEditing ? "Edit Experience" : "Add Experience"}
+          Add Experience
         </h1>
         <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">
-          {isEditing
-            ? "Update this professional experience."
-            : "Add a new role, project, or professional experience."}
+          Add a new role, project, or professional experience.
         </p>
       </div>
 
@@ -305,7 +238,7 @@ const AddExperience = () => {
         </div>
       </div>
 
-      <label className="flex items-center gap-2 text-sm text-slate-300">
+      <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
         <input
           type="checkbox"
           name="is_current"
@@ -391,7 +324,7 @@ const AddExperience = () => {
             className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/40 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <FiSave size={16} />
-            {saving ? "Saving..." : isEditing ? "Update Experience" : "Save Experience"}
+            {saving ? "Saving..." : "Save Experience"}
           </button>
         </div>
       </form>
