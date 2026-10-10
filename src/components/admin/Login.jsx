@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import { isAdminEmail } from "../../lib/adminAccess";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,13 +38,19 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
 
       if (error) {
         setError(error.message);
+        return;
+      }
+
+      if (!isAdminEmail(data.user?.email)) {
+        await supabase.auth.signOut();
+        setError("This account is not authorized to access the admin dashboard.");
         return;
       }
 

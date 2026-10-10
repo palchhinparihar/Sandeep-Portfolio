@@ -5,7 +5,7 @@ export const socialIcons = [
     href: "mailto:ssandleecompany@gmail.com",
     icon: FaEnvelope,
     title: "Mail",
-    ariaLabel: "Send email to sand1977@gmail.com",
+    ariaLabel: `Send email to ${import.meta.env.VITE_ADMIN_EMAIL_2}`,
   },
   {
     href: "https://www.linkedin.com/in/sandeep-singh-a413b277/",

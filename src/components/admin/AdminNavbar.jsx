@@ -17,7 +17,7 @@ const AdminNavbar = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate("/admin/login");
+    navigate("/login");
   };
 
   const navItems = [
@@ -86,7 +86,7 @@ const AdminNavbar = () => {
         <button
           type="button"
           onClick={handleLogout}
-          className="hidden items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition hover:bg-red-400/10 hover:text-red-300 focus:outline-none focus:ring-2 focus:ring-red-400/40 md:flex"
+          className="hidden cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition hover:bg-red-400/10 hover:text-red-300 focus:outline-none focus:ring-2 focus:ring-red-400/40 md:flex"
           title="Logout"
         >
           <FiLogOut size={17} />

@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
+import { isAdminEmail } from "../../lib/adminAccess";
 
 const ProtectedRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
         data: { user },
       } = await supabase.auth.getUser();
 
-      setUser(user);
+      setUser(isAdminEmail(user?.email) ? user : null);
       setLoading(false);
     };
 
@@ -28,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   if (!user) {
-    return <Navigate to="/admin/login" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
