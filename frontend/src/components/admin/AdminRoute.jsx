@@ -11,6 +11,8 @@ import ManageExperiences from "./experiences/ManageExperiences";
 import AddExperience from "./experiences/AddExperience";
 import EditExperience from "./experiences/EditExperience";
 
+import ManageTestimonials from "./testimonials/ManageTestimonials";
+
 const AdminRoute = () => {
   return (
     <>
@@ -20,15 +22,18 @@ const AdminRoute = () => {
         <Routes>
           <Route index element={<AdminDashboard />} />
 
-          {/* Clients */}
-          <Route path="clients" element={<ManageClients />} />
-          <Route path="clients/add" element={<AddClient />} />
-          <Route path="clients/edit/:id" element={<EditClient />} />
-
           {/* Experiences */}
           <Route path="experiences" element={<ManageExperiences />} />
           <Route path="experiences/add" element={<AddExperience />} />
           <Route path="experiences/edit/:id" element={<EditExperience />} />
+
+          {/* Testimonials */}
+          <Route path="testimonials" element={<ManageTestimonials />} />
+
+          {/* Clients */}
+          <Route path="clients" element={<ManageClients />} />
+          <Route path="clients/add" element={<AddClient />} />
+          <Route path="clients/edit/:id" element={<EditClient />} />
         </Routes>
       </main>
     </>
