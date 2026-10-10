@@ -68,7 +68,7 @@ const AddTestimonial = ({
           isDisabled
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700"
-        } text-white text-base lg:text-lg font-semibold py-3 px-6 rounded-lg transition flex items-center`}
+        } text-white cursor-pointer text-base lg:text-lg font-semibold py-3 px-6 rounded-lg transition flex items-center`}
       >
         {isSubmitting ? "Submitting..." : "Submit Testimonial"}
       </button>
