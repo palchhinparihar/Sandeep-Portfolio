@@ -1,52 +1,27 @@
-import img1 from "../assets/gallery/1.jpeg";
-import img2 from "../assets/gallery/2.jpeg";
-import img3 from "../assets/gallery/3.jpeg";
-import img4 from "../assets/gallery/4.jpeg";
-import img5 from "../assets/gallery/5.jpeg";
-import img6 from "../assets/gallery/6.jpeg";
-import img7 from "../assets/gallery/7.jpeg";
-import img8 from "../assets/gallery/8.jpeg";
-import img9 from "../assets/gallery/9.jpeg";
-import img10 from "../assets/gallery/10.jpeg";
-import img11 from "../assets/gallery/11.jpeg";
-import img12 from "../assets/gallery/12.jpeg";
-import img13 from "../assets/gallery/13.jpeg";
-import img14 from "../assets/gallery/14.jpeg";
-import img15 from "../assets/gallery/15.jpeg";
-import img16 from "../assets/gallery/16.jpeg";
-import img17 from "../assets/gallery/17.jpeg";
-import img18 from "../assets/gallery/18.jpeg";
-import img19 from "../assets/gallery/19.jpeg";
-import img20 from "../assets/gallery/20.jpeg";
-import img21 from "../assets/gallery/21.jpeg";
-import img22 from "../assets/gallery/22.jpeg";
-import img23 from "../assets/gallery/23.jpeg";
-import img24 from "../assets/gallery/24.jpeg";
-
-// Create items array with captions
+// Images for the gallery
 export const images = [
-  { image: img1, text: "1" },
-  { image: img2, text: "2" },
-  { image: img3, text: "3" },
-  { image: img4, text: "4" },
-  { image: img5, text: "5" },
-  { image: img6, text: "6" },
-  { image: img7, text: "7" },
-  { image: img8, text: "8" },
-  { image: img9, text: "9" },
-  { image: img10, text: "10" },
-  { image: img11, text: "11" },
-  { image: img12, text: "12" },
-  { image: img13, text: "13" },
-  { image: img14, text: "14" },
-  { image: img15, text: "15" },
-  { image: img16, text: "16" },
-  { image: img17, text: "17" },
-  { image: img18, text: "18" },
-  { image: img19, text: "19" },
-  { image: img20, text: "20" },
-  { image: img21, text: "21" },
-  { image: img22, text: "22" },
-  { image: img23, text: "23" },
-  { image: img24, text: "24" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639960/1_tpwchl.jpg", text: "1" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639961/2_cchfgg.jpg", text: "2" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639961/3_qriivn.jpg", text: "3" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639962/4_r4nixx.jpg", text: "4" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639962/5_wbu5up.jpg", text: "5" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639962/6_uglind.jpg", text: "6" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639962/7_ozdvsb.jpg", text: "7" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639963/8_lrxyfe.jpg", text: "8" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639964/9_chttrg.jpg", text: "9" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639964/10_aqfkyj.jpg", text: "10" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639965/11_npeseh.jpg", text: "11" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639966/12_p9ggzb.jpg", text: "12" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639966/12_p9ggzb.jpg", text: "13" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639966/13_uwn2yo.jpg", text: "14" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639968/15_wydsmi.jpg", text: "15" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639968/16_qtygoc.jpg", text: "16" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639969/17_cspcvp.jpg", text: "17" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639970/18_ta4ijn.jpg", text: "18" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639970/19_ytgxas.jpg", text: "19" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639971/20_jsxvvb.jpg", text: "20" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639971/21_yq0juk.jpg", text: "21" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639973/24_jix90s.jpg", text: "22" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639973/23_zptxku.jpg", text: "23" },
+  { image: "https://res.cloudinary.com/qohhuivq/image/upload/v1791639973/22_mhl2lj.jpg", text: "24" },
 ];
