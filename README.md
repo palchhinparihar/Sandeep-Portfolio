@@ -80,7 +80,6 @@ Note: the frontend currently points testimonials requests to the deployed API UR
 
 The backend exposes the testimonials routes under `/api/testimonials`.
 
-- `GET /` - health message
 - `GET /api/testimonials` - fetch all testimonials
 - `POST /api/testimonials` - add a testimonial
 
@@ -95,11 +94,6 @@ Required POST body fields:
 - Build the frontend with `npm run build` in [frontend/](frontend)
 - Configure the backend environment variables in your hosting provider
 - Update the frontend testimonials API base URL if your backend is not using the deployed Render endpoint
-
-## Related Docs
-
-- [frontend/README.md](frontend/README.md)
-- [backend/README.md](backend/README.md)
 
 ## Contact
 
