@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 
-import Login from "./Login";
+import AdminNavbar from "./AdminNavbar";
 import AdminDashboard from "./AdminDashboard";
-import ProtectedRoute from "./ProtectedRoute";
+
 import ManageClients from "./clients/ManageClients";
 import AddClient from "./clients/AddClient";
 import EditClient from "./clients/EditClient";
-import AdminNavbar from "./AdminNavbar";
+
 import ManageExperiences from "./experiences/ManageExperiences";
+import AddExperience from "./experiences/AddExperience";
 
 const AdminRoute = () => {
   return (
@@ -25,6 +26,7 @@ const AdminRoute = () => {
 
           {/* Experiences */}
           <Route path="experiences" element={<ManageExperiences />} />
+          <Route path="experiences/add" element={<AddExperience />} />
         </Routes>
       </main>
     </>
