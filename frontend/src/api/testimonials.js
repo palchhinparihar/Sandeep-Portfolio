@@ -1,53 +1,49 @@
-const BASE_URL = "https://sandeep-portfolio-0z4a.onrender.com/api/testimonials";
-// const BASE_URL = "http://localhost:3000/api/testimonials";
+import { supabase } from "../lib/supabase";
 
 // Fetch all testimonials
 export const getTestimonials = async () => {
   try {
-    const res = await fetch(BASE_URL);
-    if (!res.ok) throw new Error("Failed to fetch testimonials");
+    const { data, error } = await supabase
+      .from("testimonials")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-    const data = await res.json();
-    if (data.success) return { testimonials: data.testimonials, message: data.message || "Testimonials fetched successfully" };
+    if (error) throw error;
+
+    return {
+      testimonials: data || [],
+      message: "Testimonials fetched successfully",
+    };
   } catch (error) {
-    return { message: error.message || "An error occurred while fetching testimonials" };
+    console.error("Error fetching testimonials:", error);
+
+    return {
+      testimonials: [],
+      message: error.message || "An error occurred while fetching testimonials",
+    };
   }
 };
 
-// Add a new testimonial
+// Add a new testimonial (public users)
 export const addTestimonial = async (testimonialData) => {
   try {
-    const res = await fetch(BASE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(testimonialData),
-    });
-    if (!res.ok) throw new Error("Failed to add testimonial");
+    const { data, error } = await supabase
+      .from("testimonials")
+      .insert([testimonialData])
+      .select()
+      .single();
 
-    const data = await res.json();
-    if (data.success) return { testimonial: data.testimonial, message: data.message || "Testimonial added successfully" };
-  } catch (error) {
-    return { message: error.message || "An error occurred while adding testimonial" };
-  }
-};
+    if (error) throw error;
 
-// Update a testimonial by ID
-export const updateTestimonial = async (id, testimonialData) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(testimonialData),
-    });
-    if (!res.ok) throw new Error("Failed to update testimonial");
-    
-    const data = await res.json();
-    if (data.success) return { testimonial: data.testimonial, message: data.message || "Testimonial updated successfully" };
+    return {
+      testimonial: data,
+      message: "Testimonial added successfully",
+    };
   } catch (error) {
-    return { message: error.message || "An error occurred while updating testimonial" };
+    console.error("Error adding testimonial:", error);
+
+    return {
+      message: error.message || "An error occurred while adding testimonial",
+    };
   }
 };
